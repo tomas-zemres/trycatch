@@ -183,6 +183,8 @@ sub _parse_catch {
   local $Carp::Internal{'TryCatch'} = 1;
   local $Carp::Internal{'Devel::Declare'} = 1;
   local $Carp::Internal{'B::Hooks::EndOfScope'} = 1;
+  local $Carp::Internal{'B::Hooks::EndOfScope::PP'} = 1;
+  local $Carp::Internal{'B::Hooks::EndOfScope::XS'} = 1;
 
   # This isn't a normal DD-callback, so we can strip_name to get rid of 'catch'
   my $offset = $ctx->offset;
@@ -325,6 +327,8 @@ require Devel::PartialDump if $ENV{TRYCATCH_DEBUG};
   local $Carp::Internal{'TryCatch::Basic'} = 1;
   local $Carp::Internal{'Devel::Declare'} = 1;
   local $Carp::Internal{'B::Hooks::EndOfScope'} = 1;
+  local $Carp::Internal{'B::Hooks::EndOfScope::PP'} = 1;
+  local $Carp::Internal{'B::Hooks::EndOfScope::XS'} = 1;
   local $Carp::Internal{'Devel::PartialDump'} = 1;
   Carp::cluck($message) if $message;
 
