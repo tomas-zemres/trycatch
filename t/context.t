@@ -10,9 +10,17 @@ sub fun {
   try {
     die 1 if $should_die;
 
+    sub nested_A { return wantarray ? (1,2,3) : 7 }
+    is_deeply([ nested_A ], [1,2,3], "nested subrutine in array context");
+    is_deeply(scalar nested_A, 7, "nested subrutine in scalar context");
+
     $last_context = wantarray;
   }
   catch ($e where { /^1/ }) {
+    sub nested_B { return wantarray ? (1,2,3) : 7 }
+    is_deeply([ nested_B ], [1,2,3], "nested subrutine in array context");
+    is_deeply(scalar nested_B, 7, "nested subrutine in scalar context");
+
     $last_context = wantarray;
   }
 }
