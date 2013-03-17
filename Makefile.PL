@@ -12,6 +12,8 @@ all_from 'lib/TryCatch.pm';
 
 test_requires 'Test::More' => 0.88;
 test_requires 'Test::Exception';
+test_requires 'MooseX::Declare';
+test_requires 'Devel::Refcount';
 
 my %config_deps = (
   'ExtUtils::Depends' => 0.302,
